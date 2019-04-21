@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		513E611A226B11FC0008EE94 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E6119226B11FC0008EE94 /* Person.swift */; };
-		513E611C226B15630008EE94 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E611B226B15630008EE94 /* Guest.swift */; };
-		513E611E226B15850008EE94 /* Benefit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E611D226B15850008EE94 /* Benefit.swift */; };
-		513E6120226B15AF0008EE94 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E611F226B15AF0008EE94 /* Employee.swift */; };
-		513E6122226B15C70008EE94 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E6121226B15C70008EE94 /* Manager.swift */; };
-		513E6129226B2D370008EE94 /* EntrantType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E6128226B2D370008EE94 /* EntrantType.swift */; };
-		513E612B226B2E4A0008EE94 /* Pass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E612A226B2E4A0008EE94 /* Pass.swift */; };
+		513E612D226BC3510008EE94 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E612C226BC3510008EE94 /* Person.swift */; };
+		513E612F226BC50C0008EE94 /* EntrantTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E612E226BC50C0008EE94 /* EntrantTypes.swift */; };
+		513E6131226BC51D0008EE94 /* Pass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E6130226BC51D0008EE94 /* Pass.swift */; };
+		513E6133226BC59E0008EE94 /* Benefit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E6132226BC59E0008EE94 /* Benefit.swift */; };
+		513E6135226BC8950008EE94 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E6134226BC8950008EE94 /* Guest.swift */; };
+		513E6137226BC9770008EE94 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E6136226BC9770008EE94 /* Employee.swift */; };
+		513E6139226BCA5E0008EE94 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E6138226BCA5E0008EE94 /* Manager.swift */; };
+		513E613B226BCB100008EE94 /* Entrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E613A226BCB100008EE94 /* Entrant.swift */; };
+		513E613D226BDCDA0008EE94 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E613C226BDCDA0008EE94 /* Error.swift */; };
 		51DD1A652269C36F007EAE96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD1A642269C36F007EAE96 /* AppDelegate.swift */; };
 		51DD1A672269C36F007EAE96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD1A662269C36F007EAE96 /* ViewController.swift */; };
 		51DD1A6A2269C36F007EAE96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51DD1A682269C36F007EAE96 /* Main.storyboard */; };
@@ -22,13 +24,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		513E6119226B11FC0008EE94 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		513E611B226B15630008EE94 /* Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
-		513E611D226B15850008EE94 /* Benefit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benefit.swift; sourceTree = "<group>"; };
-		513E611F226B15AF0008EE94 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
-		513E6121226B15C70008EE94 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
-		513E6128226B2D370008EE94 /* EntrantType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrantType.swift; sourceTree = "<group>"; };
-		513E612A226B2E4A0008EE94 /* Pass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pass.swift; sourceTree = "<group>"; };
+		513E612C226BC3510008EE94 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Person.swift; path = "../New Group/Person.swift"; sourceTree = "<group>"; };
+		513E612E226BC50C0008EE94 /* EntrantTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrantTypes.swift; sourceTree = "<group>"; };
+		513E6130226BC51D0008EE94 /* Pass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pass.swift; sourceTree = "<group>"; };
+		513E6132226BC59E0008EE94 /* Benefit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benefit.swift; sourceTree = "<group>"; };
+		513E6134226BC8950008EE94 /* Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
+		513E6136226BC9770008EE94 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
+		513E6138226BCA5E0008EE94 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		513E613A226BCB100008EE94 /* Entrant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entrant.swift; sourceTree = "<group>"; };
+		513E613C226BDCDA0008EE94 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		51DD1A612269C36F007EAE96 /* PassGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51DD1A642269C36F007EAE96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51DD1A662269C36F007EAE96 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,15 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		513E6127226B1A460008EE94 /* Model */ = {
+		513E613E226C75A70008EE94 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				513E611F226B15AF0008EE94 /* Employee.swift */,
-				513E6121226B15C70008EE94 /* Manager.swift */,
-				513E611B226B15630008EE94 /* Guest.swift */,
-				513E611D226B15850008EE94 /* Benefit.swift */,
-				513E6119226B11FC0008EE94 /* Person.swift */,
-				513E6128226B2D370008EE94 /* EntrantType.swift */,
+				513E612C226BC3510008EE94 /* Person.swift */,
+				513E612E226BC50C0008EE94 /* EntrantTypes.swift */,
+				513E6134226BC8950008EE94 /* Guest.swift */,
+				513E613A226BCB100008EE94 /* Entrant.swift */,
+				513E6136226BC9770008EE94 /* Employee.swift */,
+				513E6138226BCA5E0008EE94 /* Manager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -83,8 +87,10 @@
 			children = (
 				51DD1A642269C36F007EAE96 /* AppDelegate.swift */,
 				51DD1A662269C36F007EAE96 /* ViewController.swift */,
-				513E612A226B2E4A0008EE94 /* Pass.swift */,
-				513E6127226B1A460008EE94 /* Model */,
+				513E613E226C75A70008EE94 /* Model */,
+				513E613C226BDCDA0008EE94 /* Error.swift */,
+				513E6130226BC51D0008EE94 /* Pass.swift */,
+				513E6132226BC59E0008EE94 /* Benefit.swift */,
 				51DD1A682269C36F007EAE96 /* Main.storyboard */,
 				51DD1A6B2269C371007EAE96 /* Assets.xcassets */,
 				51DD1A6D2269C371007EAE96 /* LaunchScreen.storyboard */,
@@ -164,15 +170,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				513E611C226B15630008EE94 /* Guest.swift in Sources */,
+				513E612F226BC50C0008EE94 /* EntrantTypes.swift in Sources */,
+				513E6137226BC9770008EE94 /* Employee.swift in Sources */,
+				513E612D226BC3510008EE94 /* Person.swift in Sources */,
+				513E613D226BDCDA0008EE94 /* Error.swift in Sources */,
 				51DD1A672269C36F007EAE96 /* ViewController.swift in Sources */,
-				513E6129226B2D370008EE94 /* EntrantType.swift in Sources */,
-				513E6122226B15C70008EE94 /* Manager.swift in Sources */,
-				513E6120226B15AF0008EE94 /* Employee.swift in Sources */,
-				513E611A226B11FC0008EE94 /* Person.swift in Sources */,
+				513E6131226BC51D0008EE94 /* Pass.swift in Sources */,
 				51DD1A652269C36F007EAE96 /* AppDelegate.swift in Sources */,
-				513E612B226B2E4A0008EE94 /* Pass.swift in Sources */,
-				513E611E226B15850008EE94 /* Benefit.swift in Sources */,
+				513E6135226BC8950008EE94 /* Guest.swift in Sources */,
+				513E6139226BCA5E0008EE94 /* Manager.swift in Sources */,
+				513E613B226BCB100008EE94 /* Entrant.swift in Sources */,
+				513E6133226BC59E0008EE94 /* Benefit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

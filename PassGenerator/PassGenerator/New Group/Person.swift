@@ -2,15 +2,11 @@
 //  Person.swift
 //  PassGenerator
 //
-//  Created by Dipanshu Sehrawat on 20/04/19.
+//  Created by Dipanshu Sehrawat on 21/04/19.
 //  Copyright © 2019 Dipanshu Sehrawat. All rights reserved.
 //
 
 import Foundation
-
-protocol Entrant {
-    var benefits: [Benefit] { get }
-}
 
 class Person {
     var firstName: String?
@@ -22,9 +18,9 @@ class Person {
     var streetAddress: String?
     var city: String?
     var state: String?
-    var zip: Int?
+    var zipCode: Int?
     
-    init(firstName: String?, lastName: String?, dateOfBirth: Date?, ssn: Int?, project: Int?, company: String?, streetAddress: String?, city: String?, state: String?, zip: Int?) {
+    init(firstName: String?, lastName: String?, dateOfBirth: Date?, ssn: Int?, project: Int?, company: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) {
         self.firstName = firstName
         self.lastName = lastName
         self.dateOfBirth = dateOfBirth
@@ -34,6 +30,6 @@ class Person {
         self.streetAddress = streetAddress
         self.city = city
         self.state = state
-        self.zip = zip
+        self.zipCode = zipCode
     }
 }

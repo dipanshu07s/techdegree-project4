@@ -2,49 +2,56 @@
 //  Guest.swift
 //  PassGenerator
 //
-//  Created by Dipanshu Sehrawat on 20/04/19.
+//  Created by Dipanshu Sehrawat on 21/04/19.
 //  Copyright © 2019 Dipanshu Sehrawat. All rights reserved.
 //
 
 import Foundation
 
-class ChildGuest: Person, Entrant {
-    var benefits: [Benefit] = [.amusementAreaAccess, .allRidesAccess]
+extension GuestType {
+    func areaAccess() -> [AreaAccess] {
+        switch self {
+        case .child, .classic, .vip: return [.amusement]
+        }
+    }
     
+    func rideAccess() -> [RideAccess] {
+        switch self {
+        case .child, .classic: return [.allRides]
+        case .vip: return [.allRides, .skipAllLines]
+        }
+    }
+    
+    func discounts() -> [Discounts] {
+        switch self {
+        case .vip: return [.food(percentage: 10), .merchandise(percentage: 20)]
+        case .child, .classic: return []
+        }
+    }
+}
+
+class Guest: Person {
+    let personType: PersonType = .guest
+    
+}
+
+class ClassicGuest: Guest {
+    let guestType: GuestType = .classic
+    init() {
+        super.init(firstName: nil, lastName: nil, dateOfBirth: nil, ssn: nil, project: nil, company: nil, streetAddress: nil, city: nil, state: nil, zipCode: nil)
+    }
+}
+
+class VIPGuest: Guest {
+    let guestType: GuestType = .vip
+    init() {
+        super.init(firstName: nil, lastName: nil, dateOfBirth: nil, ssn: nil, project: nil, company: nil, streetAddress: nil, city: nil, state: nil, zipCode: nil)
+    }
+}
+
+class ChildGuest: Guest {
+    let guestType: GuestType = .child
     init(dateOfBirth: Date) {
-        super.init(firstName: nil, lastName: nil, dateOfBirth: dateOfBirth, ssn: nil, project: nil, company: nil, streetAddress: nil, city: nil, state: nil, zip: nil)
-    }
-}
-
-class ClassicGuest: Person, Entrant {
-    var benefits: [Benefit] = [.amusementAreaAccess, .allRidesAccess]
-    
-    init() {
-        super.init(firstName: nil, lastName: nil, dateOfBirth: nil, ssn: nil, project: nil, company: nil, streetAddress: nil, city: nil, state: nil, zip: nil)
-    }
-}
-
-class SeniorGuest: Person, Entrant {
-    var benefits: [Benefit] = [.amusementAreaAccess, .allRidesAccess, .skipRideLines, .foodDiscount(percentage: 10), .merchandiseDiscount(percentage: 10)]
-    
-    init(firstName: String, lastName: String, dateOfBirth: Date) {
-        super.init(firstName: firstName, lastName: lastName, dateOfBirth: dateOfBirth, ssn: nil, project: nil, company: nil, streetAddress: nil, city: nil, state: nil, zip: nil)
-    }
-}
-
-class VipGuest: Person, Entrant {
-    var benefits: [Benefit] = [.amusementAreaAccess, .allRidesAccess, .skipRideLines, .foodDiscount(percentage: 10), .merchandiseDiscount(percentage: 20)]
-    
-    init() {
-        super.init(firstName: nil, lastName: nil, dateOfBirth: nil, ssn: nil, project: nil, company: nil, streetAddress: nil, city: nil, state: nil, zip: nil)
-    }
-}
-
-class SeasonGuest: Person, Entrant {
-    
-    var benefits: [Benefit] = [.amusementAreaAccess, .allRidesAccess, .skipRideLines, .foodDiscount(percentage: 10), .merchandiseDiscount(percentage: 20)]
-    
-    init(firstName: String, lastName: String, streetAddress: String, city: String, state: String, zip: Int) {
-        super.init(firstName: firstName, lastName: lastName, dateOfBirth: nil, ssn: nil, project: nil, company: nil, streetAddress: streetAddress, city: city, state: state, zip: zip)
+        super.init(firstName: nil, lastName: nil, dateOfBirth: dateOfBirth, ssn: nil, project: nil, company: nil, streetAddress: nil, city: nil, state: nil, zipCode: nil)
     }
 }

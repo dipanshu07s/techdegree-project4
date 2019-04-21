@@ -1,8 +1,8 @@
 //
-//  EntrantType.swift
+//  Entrant.swift
 //  PassGenerator
 //
-//  Created by Dipanshu Sehrawat on 20/04/19.
+//  Created by Dipanshu Sehrawat on 21/04/19.
 //  Copyright © 2019 Dipanshu Sehrawat. All rights reserved.
 //
 
@@ -18,8 +18,6 @@ enum GuestType {
     case classic
     case vip
     case child
-    case season
-    case senior
 }
 
 enum ManagerType {
@@ -27,7 +25,7 @@ enum ManagerType {
 }
 
 enum EmployeeType {
-    case maintenance
     case foodService
     case rideService
+    case maintenance
 }
