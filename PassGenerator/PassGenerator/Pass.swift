@@ -23,7 +23,7 @@ struct AmusementParkPass: Pass {
 }
 
 struct CreatePass {
-    static func createChildGuestPassWith(dateOfBith: Date?) -> Pass? {
+    static func createChildGuestPassWith(dateOfBith: Date?) throws -> Pass {
         var childEntrant: ChildGuest
         do {
             childEntrant = try Entrants.createChildGuestWith(dateOfBirth: dateOfBith)
@@ -34,10 +34,10 @@ struct CreatePass {
             print(error.localizedDescription)
         }
         
-        return nil
+        throw PassError.invalidPass
     }
     
-    static func createClassicGuestPassWith() -> Pass? {
+    static func createClassicGuestPassWith() throws -> Pass {
         var classicGuest: ClassicGuest
         do {
             classicGuest = try Entrants.createClassicGuest()
@@ -46,10 +46,10 @@ struct CreatePass {
             print(error.localizedDescription)
         }
         
-        return nil
+        throw PassError.invalidPass
     }
     
-    static func createVipGuestPassWith() -> Pass? {
+    static func createVipGuestPassWith() throws -> Pass {
         var vipGuest: VIPGuest
         do {
             vipGuest = try Entrants.createVipGuest()
@@ -58,10 +58,10 @@ struct CreatePass {
             print(error.localizedDescription)
         }
         
-        return nil
+        throw PassError.invalidPass
     }
     
-    static func createFoodServiceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) -> Pass? {
+    static func createFoodServiceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> Pass {
         let foodServiceEmployee: FoodServiceEmployee
         do {
             foodServiceEmployee = try Entrants.createFoodServiceEmployeeWith(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
@@ -82,10 +82,10 @@ struct CreatePass {
             print(error.localizedDescription)
         }
         
-        return nil
+        throw PassError.invalidPass
     }
     
-    static func createRideServiceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) -> Pass? {
+    static func createRideServiceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> Pass {
         let rideServiceEmployee: RideServiceEmployee
         do {
             rideServiceEmployee = try Entrants.createRideServiceEmployeeWith(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
@@ -106,10 +106,10 @@ struct CreatePass {
             print(error.localizedDescription)
         }
         
-        return nil
+        throw PassError.invalidPass
     }
     
-    static func createMaintenanceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) -> Pass? {
+    static func createMaintenanceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> Pass {
         let maintenanceEmployee: MaintenanceEmployee
         do {
             maintenanceEmployee = try Entrants.createMaintenanceEmployeeWith(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
@@ -130,10 +130,10 @@ struct CreatePass {
             print(error.localizedDescription)
         }
         
-        return nil
+        throw PassError.invalidPass
     }
     
-    static func createManagerWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) -> Pass? {
+    static func createManagerWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> Pass {
         let manager: Manager
         do {
             manager = try Entrants.createManagerWith(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
@@ -154,6 +154,6 @@ struct CreatePass {
             print(error.localizedDescription)
         }
         
-        return nil
+        throw PassError.invalidPass
     }
 }
