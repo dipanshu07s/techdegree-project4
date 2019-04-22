@@ -8,10 +8,6 @@
 
 import Foundation
 
-enum PassError: Error {
-    case invalidPass
-}
-
 struct AmusementParkPass {
     let entrant: Person
     let areaAccess: [AreaAccess]
@@ -21,7 +17,15 @@ struct AmusementParkPass {
 
 struct Pass {
     static func createChildGuestPassWith(dateOfBirth: Date?) throws -> AmusementParkPass {
-        guard let dateOfBirth = dateOfBirth else { throw MissingInfo.dateOfBirthMissing }
+        guard let dateOfBirth = dateOfBirth else { throw PassError.dateOfBirthMissing }
+        
+        let calander = Calendar.current
+        let currentDate = Date()
+        let birthYear = calander.component(.year, from: dateOfBirth)
+        let currentYear = calander.component(.year, from: currentDate)
+        if (currentYear - birthYear) > 5 {
+            throw PassError.invalidDateOfBirth
+        }
         
         let guest = ChildGuest(dateOfBirth: dateOfBirth)
         let guestAreaAccess = guest.guestType.areaAccess()
@@ -48,12 +52,12 @@ struct Pass {
     }
     
     static func createFoodServiceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> AmusementParkPass {
-        guard let firstName = firstName else { throw MissingInfo.firstNameMissing }
-        guard let lastName = lastName else { throw MissingInfo.lastNameMissing }
-        guard let streetAddress = streetAddress else { throw MissingInfo.streetAddressMissing }
-        guard let city = city else { throw MissingInfo.cityMissing }
-        guard let state = state else { throw MissingInfo.stateMissing }
-        guard let zipCode = zipCode else { throw MissingInfo.zipcodeMissing }
+        guard let firstName = firstName else { throw PassError.firstNameMissing }
+        guard let lastName = lastName else { throw PassError.lastNameMissing }
+        guard let streetAddress = streetAddress else { throw PassError.streetAddressMissing }
+        guard let city = city else { throw PassError.cityMissing }
+        guard let state = state else { throw PassError.stateMissing }
+        guard let zipCode = zipCode else { throw PassError.zipcodeMissing }
         
         let guest = FoodServiceEmployee(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
         let guestAreaAccess = guest.employeeType.areaAccess()
@@ -63,12 +67,12 @@ struct Pass {
     }
     
     static func createRideServiceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> AmusementParkPass {
-        guard let firstName = firstName else { throw MissingInfo.firstNameMissing }
-        guard let lastName = lastName else { throw MissingInfo.lastNameMissing }
-        guard let streetAddress = streetAddress else { throw MissingInfo.streetAddressMissing }
-        guard let city = city else { throw MissingInfo.cityMissing }
-        guard let state = state else { throw MissingInfo.stateMissing }
-        guard let zipCode = zipCode else { throw MissingInfo.zipcodeMissing }
+        guard let firstName = firstName else { throw PassError.firstNameMissing }
+        guard let lastName = lastName else { throw PassError.lastNameMissing }
+        guard let streetAddress = streetAddress else { throw PassError.streetAddressMissing }
+        guard let city = city else { throw PassError.cityMissing }
+        guard let state = state else { throw PassError.stateMissing }
+        guard let zipCode = zipCode else { throw PassError.zipcodeMissing }
         
         let guest = RideServiceEmployee(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
         let guestAreaAccess = guest.employeeType.areaAccess()
@@ -78,12 +82,12 @@ struct Pass {
     }
     
     static func createMaintenanceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> AmusementParkPass {
-        guard let firstName = firstName else { throw MissingInfo.firstNameMissing }
-        guard let lastName = lastName else { throw MissingInfo.lastNameMissing }
-        guard let streetAddress = streetAddress else { throw MissingInfo.streetAddressMissing }
-        guard let city = city else { throw MissingInfo.cityMissing }
-        guard let state = state else { throw MissingInfo.stateMissing }
-        guard let zipCode = zipCode else { throw MissingInfo.zipcodeMissing }
+        guard let firstName = firstName else { throw PassError.firstNameMissing }
+        guard let lastName = lastName else { throw PassError.lastNameMissing }
+        guard let streetAddress = streetAddress else { throw PassError.streetAddressMissing }
+        guard let city = city else { throw PassError.cityMissing }
+        guard let state = state else { throw PassError.stateMissing }
+        guard let zipCode = zipCode else { throw PassError.zipcodeMissing }
         
         let guest = MaintenanceEmployee(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
         let guestAreaAccess = guest.employeeType.areaAccess()
@@ -93,12 +97,12 @@ struct Pass {
     }
     
     static func createManagerWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> AmusementParkPass {
-        guard let firstName = firstName else { throw MissingInfo.firstNameMissing }
-        guard let lastName = lastName else { throw MissingInfo.lastNameMissing }
-        guard let streetAddress = streetAddress else { throw MissingInfo.streetAddressMissing }
-        guard let city = city else { throw MissingInfo.cityMissing }
-        guard let state = state else { throw MissingInfo.stateMissing }
-        guard let zipCode = zipCode else { throw MissingInfo.zipcodeMissing }
+        guard let firstName = firstName else { throw PassError.firstNameMissing }
+        guard let lastName = lastName else { throw PassError.lastNameMissing }
+        guard let streetAddress = streetAddress else { throw PassError.streetAddressMissing }
+        guard let city = city else { throw PassError.cityMissing }
+        guard let state = state else { throw PassError.stateMissing }
+        guard let zipCode = zipCode else { throw PassError.zipcodeMissing }
         
         let guest = Manager(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
         let guestAreaAccess = guest.managerType.areaAccess()

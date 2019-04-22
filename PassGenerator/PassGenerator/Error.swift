@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum MissingInfo: String, Error {
+enum PassError: String, Error {
     case firstNameMissing = "Please provide the first name of entrant"
     case lastNameMissing = "Please provide the last name of entrant"
     case dateOfBirthMissing = "Please provide date of Birth of entrant"
@@ -16,4 +16,5 @@ enum MissingInfo: String, Error {
     case cityMissing = "Please provide city of entrant"
     case stateMissing = "Please provide state of entrant"
     case zipcodeMissing = "Please provide zip code of entrant"
+    case invalidDateOfBirth = "Please provide appropriate Date of Birth"
 }

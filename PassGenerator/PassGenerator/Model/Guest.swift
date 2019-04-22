@@ -32,7 +32,29 @@ extension GuestType {
 
 class Guest: Person {
     let personType: PersonType = .guest
+    var seconds = 5
     
+    override func swipe(_ pass: AmusementParkPass, on area: AreaAccess) {
+        if pass.areaAccess.contains(area) {
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+                guard self.seconds != 0 else {
+                    timer.invalidate()
+                    self.seconds = 5
+                    return
+                }
+                self.seconds -= 1
+            })
+            
+            if seconds == 5 {
+                print("Access Granted")
+            } else {
+                print("Please wait 5 seconds")
+            }
+            
+        } else {
+            print("Access Denied")
+        }
+    }
 }
 
 class ClassicGuest: Guest {
