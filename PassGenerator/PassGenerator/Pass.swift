@@ -8,152 +8,102 @@
 
 import Foundation
 
-protocol Pass {
-    var entrant: Person { get }
-    var areaAccess: [AreaAccess] { get }
-    var rideAccess: [RideAccess] { get }
-    var discounts: [Discounts] { get }
+enum PassError: Error {
+    case invalidPass
 }
 
-struct AmusementParkPass: Pass {
+struct AmusementParkPass {
     let entrant: Person
     let areaAccess: [AreaAccess]
     let rideAccess: [RideAccess]
     let discounts: [Discounts]
 }
 
-struct CreatePass {
-    static func createChildGuestPassWith(dateOfBith: Date?) throws -> Pass {
-        var childEntrant: ChildGuest
-        do {
-            childEntrant = try Entrants.createChildGuestWith(dateOfBirth: dateOfBith)
-            return AmusementParkPass(entrant: childEntrant, areaAccess: childEntrant.guestType.areaAccess(), rideAccess: childEntrant.guestType.rideAccess(), discounts: childEntrant.guestType.discounts())
-        } catch MissingInfo.dateOfBirthMissing {
-            print(MissingInfo.dateOfBirthMissing.rawValue)
-        } catch let error {
-            print(error.localizedDescription)
-        }
+struct Pass {
+    static func createChildGuestPassWith(dateOfBirth: Date?) throws -> AmusementParkPass {
+        guard let dateOfBirth = dateOfBirth else { throw MissingInfo.dateOfBirthMissing }
         
-        throw PassError.invalidPass
+        let guest = ChildGuest(dateOfBirth: dateOfBirth)
+        let guestAreaAccess = guest.guestType.areaAccess()
+        let guestRideAccess = guest.guestType.rideAccess()
+        let guestDiscount = guest.guestType.discounts()
+        
+        return AmusementParkPass(entrant: guest, areaAccess: guestAreaAccess, rideAccess: guestRideAccess, discounts: guestDiscount)
     }
     
-    static func createClassicGuestPassWith() throws -> Pass {
-        var classicGuest: ClassicGuest
-        do {
-            classicGuest = try Entrants.createClassicGuest()
-            return AmusementParkPass(entrant: classicGuest, areaAccess: classicGuest.guestType.areaAccess(), rideAccess: classicGuest.guestType.rideAccess(), discounts: classicGuest.guestType.discounts())
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        throw PassError.invalidPass
+    static func createClassicGuestPassWith() throws -> AmusementParkPass {
+        let guest = ClassicGuest()
+        let guestAreaAccess = guest.guestType.areaAccess()
+        let guestRideAccess = guest.guestType.rideAccess()
+        let guestDiscount = guest.guestType.discounts()
+        return AmusementParkPass(entrant: guest, areaAccess: guestAreaAccess, rideAccess: guestRideAccess, discounts: guestDiscount)
     }
     
-    static func createVipGuestPassWith() throws -> Pass {
-        var vipGuest: VIPGuest
-        do {
-            vipGuest = try Entrants.createVipGuest()
-            return AmusementParkPass(entrant: vipGuest, areaAccess: vipGuest.guestType.areaAccess(), rideAccess: vipGuest.guestType.rideAccess(), discounts: vipGuest.guestType.discounts())
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        throw PassError.invalidPass
+    static func createVipGuestPassWith() throws -> AmusementParkPass {
+        let guest = VIPGuest()
+        let guestAreaAccess = guest.guestType.areaAccess()
+        let guestRideAccess = guest.guestType.rideAccess()
+        let guestDiscount = guest.guestType.discounts()
+        return AmusementParkPass(entrant: guest, areaAccess: guestAreaAccess, rideAccess: guestRideAccess, discounts: guestDiscount)
     }
     
-    static func createFoodServiceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> Pass {
-        let foodServiceEmployee: FoodServiceEmployee
-        do {
-            foodServiceEmployee = try Entrants.createFoodServiceEmployeeWith(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
-            return AmusementParkPass(entrant: foodServiceEmployee, areaAccess: foodServiceEmployee.employeeType.areaAccess(), rideAccess: foodServiceEmployee.employeeType.rideAccess(), discounts: foodServiceEmployee.employeeType.discounts())
-        } catch MissingInfo.firstNameMissing {
-            print(MissingInfo.firstNameMissing.rawValue)
-        } catch MissingInfo.lastNameMissing {
-            print(MissingInfo.lastNameMissing.rawValue)
-        } catch MissingInfo.streetAddressMissing {
-            print(MissingInfo.streetAddressMissing.rawValue)
-        } catch MissingInfo.cityMissing {
-            print(MissingInfo.cityMissing.rawValue)
-        } catch MissingInfo.stateMissing {
-            print(MissingInfo.stateMissing.rawValue)
-        } catch MissingInfo.zipcodeMissing {
-            print(MissingInfo.zipcodeMissing.rawValue)
-        } catch let error {
-            print(error.localizedDescription)
-        }
+    static func createFoodServiceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> AmusementParkPass {
+        guard let firstName = firstName else { throw MissingInfo.firstNameMissing }
+        guard let lastName = lastName else { throw MissingInfo.lastNameMissing }
+        guard let streetAddress = streetAddress else { throw MissingInfo.streetAddressMissing }
+        guard let city = city else { throw MissingInfo.cityMissing }
+        guard let state = state else { throw MissingInfo.stateMissing }
+        guard let zipCode = zipCode else { throw MissingInfo.zipcodeMissing }
         
-        throw PassError.invalidPass
+        let guest = FoodServiceEmployee(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
+        let guestAreaAccess = guest.employeeType.areaAccess()
+        let guestRideAccess = guest.employeeType.rideAccess()
+        let guestDiscount = guest.employeeType.discounts()
+        return AmusementParkPass(entrant: guest, areaAccess: guestAreaAccess, rideAccess: guestRideAccess, discounts: guestDiscount)
     }
     
-    static func createRideServiceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> Pass {
-        let rideServiceEmployee: RideServiceEmployee
-        do {
-            rideServiceEmployee = try Entrants.createRideServiceEmployeeWith(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
-            return AmusementParkPass(entrant: rideServiceEmployee, areaAccess: rideServiceEmployee.employeeType.areaAccess(), rideAccess: rideServiceEmployee.employeeType.rideAccess(), discounts: rideServiceEmployee.employeeType.discounts())
-        } catch MissingInfo.firstNameMissing {
-            print(MissingInfo.firstNameMissing.rawValue)
-        } catch MissingInfo.lastNameMissing {
-            print(MissingInfo.lastNameMissing.rawValue)
-        } catch MissingInfo.streetAddressMissing {
-            print(MissingInfo.streetAddressMissing.rawValue)
-        } catch MissingInfo.cityMissing {
-            print(MissingInfo.cityMissing.rawValue)
-        } catch MissingInfo.stateMissing {
-            print(MissingInfo.stateMissing.rawValue)
-        } catch MissingInfo.zipcodeMissing {
-            print(MissingInfo.zipcodeMissing.rawValue)
-        } catch let error {
-            print(error.localizedDescription)
-        }
+    static func createRideServiceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> AmusementParkPass {
+        guard let firstName = firstName else { throw MissingInfo.firstNameMissing }
+        guard let lastName = lastName else { throw MissingInfo.lastNameMissing }
+        guard let streetAddress = streetAddress else { throw MissingInfo.streetAddressMissing }
+        guard let city = city else { throw MissingInfo.cityMissing }
+        guard let state = state else { throw MissingInfo.stateMissing }
+        guard let zipCode = zipCode else { throw MissingInfo.zipcodeMissing }
         
-        throw PassError.invalidPass
+        let guest = RideServiceEmployee(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
+        let guestAreaAccess = guest.employeeType.areaAccess()
+        let guestRideAccess = guest.employeeType.rideAccess()
+        let guestDiscount = guest.employeeType.discounts()
+        return AmusementParkPass(entrant: guest, areaAccess: guestAreaAccess, rideAccess: guestRideAccess, discounts: guestDiscount)
     }
     
-    static func createMaintenanceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> Pass {
-        let maintenanceEmployee: MaintenanceEmployee
-        do {
-            maintenanceEmployee = try Entrants.createMaintenanceEmployeeWith(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
-            return AmusementParkPass(entrant: maintenanceEmployee, areaAccess: maintenanceEmployee.employeeType.areaAccess(), rideAccess: maintenanceEmployee.employeeType.rideAccess(), discounts: maintenanceEmployee.employeeType.discounts())
-        } catch MissingInfo.firstNameMissing {
-            print(MissingInfo.firstNameMissing.rawValue)
-        } catch MissingInfo.lastNameMissing {
-            print(MissingInfo.lastNameMissing.rawValue)
-        } catch MissingInfo.streetAddressMissing {
-            print(MissingInfo.streetAddressMissing.rawValue)
-        } catch MissingInfo.cityMissing {
-            print(MissingInfo.cityMissing.rawValue)
-        } catch MissingInfo.stateMissing {
-            print(MissingInfo.stateMissing.rawValue)
-        } catch MissingInfo.zipcodeMissing {
-            print(MissingInfo.zipcodeMissing.rawValue)
-        } catch let error {
-            print(error.localizedDescription)
-        }
+    static func createMaintenanceEmployeeWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> AmusementParkPass {
+        guard let firstName = firstName else { throw MissingInfo.firstNameMissing }
+        guard let lastName = lastName else { throw MissingInfo.lastNameMissing }
+        guard let streetAddress = streetAddress else { throw MissingInfo.streetAddressMissing }
+        guard let city = city else { throw MissingInfo.cityMissing }
+        guard let state = state else { throw MissingInfo.stateMissing }
+        guard let zipCode = zipCode else { throw MissingInfo.zipcodeMissing }
         
-        throw PassError.invalidPass
+        let guest = MaintenanceEmployee(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
+        let guestAreaAccess = guest.employeeType.areaAccess()
+        let guestRideAccess = guest.employeeType.rideAccess()
+        let guestDiscount = guest.employeeType.discounts()
+        return AmusementParkPass(entrant: guest, areaAccess: guestAreaAccess, rideAccess: guestRideAccess, discounts: guestDiscount)
     }
     
-    static func createManagerWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> Pass {
-        let manager: Manager
-        do {
-            manager = try Entrants.createManagerWith(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
-            return AmusementParkPass(entrant: manager, areaAccess: manager.managerType.areaAccess(), rideAccess: manager.managerType.rideAccess(), discounts: manager.managerType.discounts())
-        } catch MissingInfo.firstNameMissing {
-            print(MissingInfo.firstNameMissing.rawValue)
-        } catch MissingInfo.lastNameMissing {
-            print(MissingInfo.lastNameMissing.rawValue)
-        } catch MissingInfo.streetAddressMissing {
-            print(MissingInfo.streetAddressMissing.rawValue)
-        } catch MissingInfo.cityMissing {
-            print(MissingInfo.cityMissing.rawValue)
-        } catch MissingInfo.stateMissing {
-            print(MissingInfo.stateMissing.rawValue)
-        } catch MissingInfo.zipcodeMissing {
-            print(MissingInfo.zipcodeMissing.rawValue)
-        } catch let error {
-            print(error.localizedDescription)
-        }
+    static func createManagerWith(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) throws -> AmusementParkPass {
+        guard let firstName = firstName else { throw MissingInfo.firstNameMissing }
+        guard let lastName = lastName else { throw MissingInfo.lastNameMissing }
+        guard let streetAddress = streetAddress else { throw MissingInfo.streetAddressMissing }
+        guard let city = city else { throw MissingInfo.cityMissing }
+        guard let state = state else { throw MissingInfo.stateMissing }
+        guard let zipCode = zipCode else { throw MissingInfo.zipcodeMissing }
         
-        throw PassError.invalidPass
+        let guest = Manager(firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode)
+        let guestAreaAccess = guest.managerType.areaAccess()
+        let guestRideAccess = guest.managerType.rideAccess()
+        let guestDiscount = guest.managerType.discounts()
+        return AmusementParkPass(entrant: guest, areaAccess: guestAreaAccess, rideAccess: guestRideAccess, discounts: guestDiscount)
     }
 }

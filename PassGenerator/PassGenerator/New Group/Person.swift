@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Person {
+class Person: Entrant {
     var firstName: String?
     var lastName: String?
     var dateOfBirth: Date?
