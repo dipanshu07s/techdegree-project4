@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		513E612C226BC3510008EE94 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Person.swift; path = "../New Group/Person.swift"; sourceTree = "<group>"; };
+		513E612C226BC3510008EE94 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		513E612E226BC50C0008EE94 /* EntrantTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrantTypes.swift; sourceTree = "<group>"; };
 		513E6130226BC51D0008EE94 /* Pass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pass.swift; sourceTree = "<group>"; };
 		513E6132226BC59E0008EE94 /* Benefit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benefit.swift; sourceTree = "<group>"; };
@@ -57,8 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				513E612C226BC3510008EE94 /* Person.swift */,
-				513E612E226BC50C0008EE94 /* EntrantTypes.swift */,
 				513E613A226BCB100008EE94 /* Entrant.swift */,
+				513E612E226BC50C0008EE94 /* EntrantTypes.swift */,
 				513E6134226BC8950008EE94 /* Guest.swift */,
 				513E6136226BC9770008EE94 /* Employee.swift */,
 				513E6138226BCA5E0008EE94 /* Manager.swift */,
