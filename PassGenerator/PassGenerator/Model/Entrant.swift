@@ -9,6 +9,7 @@
 import Foundation
 
 protocol Entrant {
+    var passType: PassType? { get }
     func swipe(_ pass: AmusementParkPass, on area: AreaAccess)
     func swipe(_ pass: AmusementParkPass, for area: RideAccess)
 }

@@ -19,6 +19,7 @@ class Person: Entrant {
     var city: String?
     var state: String?
     var zipCode: Int?
+    var passType: PassType?
     
     init(firstName: String?, lastName: String?, dateOfBirth: Date?, ssn: Int?, project: Int?, company: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?) {
         self.firstName = firstName
@@ -43,9 +44,9 @@ class Person: Entrant {
     
     func swipe(_ pass: AmusementParkPass, for area: RideAccess) {
         if pass.rideAccess.contains(area) {
-            print("You have this priviledge")
+            print("You have this benefit")
         } else {
-            print("Sorry you cannot have this priviledge")
+            print("You do not have this benefit")
         }
     }
 }
